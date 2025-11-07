@@ -1,0 +1,164 @@
+/* Explorar.module.css */
+
+.filterSection {
+  margin: 8px 0;
+}
+
+.collapsible {
+  cursor: pointer;
+}
+
+.moreFilters {
+  margin-top: 8px;
+}
+
+.filterLabel {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.filterTag {
+  cursor: pointer;
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+
+.filterTagActive {
+  border-color: #4f46e5 !important;
+  background: #eef2ff !important;
+}
+
+.hiddenCheckbox {
+  display: none;
+}
+
+.demoCheckbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.filterChips {
+  margin-top: 8px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.compareTable {
+  overflow: auto;
+}
+
+.compareTable table {
+  width: 100%;
+  font-size: 14px;
+}
+
+.compareTableHeader {
+  text-align: left;
+  color: #64748b;
+}
+
+.compareHint {
+  color: #64748b;
+}
+
+.clearCompare {
+  margin-top: 8px;
+}
+
+.resultsGrid {
+  margin-top: 12px;
+}
+
+.projectCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.projectInfo {
+  flex: 1;
+}
+
+.projectTitle {
+  font-size: 16px;
+}
+
+.projectSubtitle {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.tagContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.techTagContainer {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.actionButtons {
+  margin-top: 12px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modalSubtitle {
+  color: #64748b;
+}
+
+.modalSummary {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.awardsContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.awardBadge {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.modalGrid {
+  margin-top: 12px;
+}
+
+.teamSection {
+  margin-top: 12px;
+}
+
+.teamContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.teamMember {
+  padding: 4px 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.modalActions {
+  margin-top: 12px;
+}
+
