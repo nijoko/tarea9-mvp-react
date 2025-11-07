@@ -60,22 +60,34 @@ export default function App(){
       height: isHomePage ? '100vh' : 'auto',
       overflow: isHomePage ? 'hidden' : 'auto'
     }}>
-      {!isHomePage && (
-        <div className="topbar">
-          <div className="inner">
-            <div style={{display:'flex', alignItems:'center', gap:8}}>
-              <div className="h1">FESW</div>
-            </div>
-            <div className="tabs">
-              <NavTab label="Home" to="/" />
-              <NavTab label="Explorar" to="/explorar" />
-              <NavTab label="Sesiones y Agenda" to="/programa" />
-              <NavTab label="Transmisión" to="/streaming" />
-              <NavTab label="Mi Feria" to="/mi-feria" badge={(favorites.length+agenda.length)||undefined} />
-            </div>
+      <div className="topbar" style={{
+        background: isHomePage ? 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' : 'var(--bg)'
+      }}>
+        <div className="inner">
+          <div style={{display:'flex', alignItems:'center', gap:16}}>
+            <img 
+              src='https://usm.cl/wp-content/uploads/2020/12/logo-usm_blanco.svg' 
+              alt='Logo UTFSM' 
+              style={{height: 40}}
+            />
+          </div>
+          <div className="tabs">
+            <NavTab label="Home" to="/" />
+            <NavTab label="Explorar" to="/explorar" />
+            <NavTab label="Sesiones y Agenda" to="/programa" />
+            <NavTab label="Transmisión" to="/streaming" />
+            <NavTab label="Mi Feria" to="/mi-feria" badge={(favorites.length+agenda.length)||undefined} />
+          </div>
+          <div style={{display:'flex', alignItems:'center', gap:16}}>
+            <img 
+              src='https://static.younoodle.com/pictures/38/49/41/5a8dac8eec2968_49384881.png' 
+              alt='Logo Feria' 
+              style={{height: 40}}
+            />
+            <div className="h1">FESW</div>
           </div>
         </div>
-      )}
+      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />

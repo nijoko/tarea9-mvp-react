@@ -15,7 +15,6 @@ body {
   color: rgb(210, 218, 220);
 }
 .container {
-  border: 2px solid red;
   max-width: 1120px;
   margin: 0 auto;
   padding: 24px;
@@ -31,7 +30,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1120px;
   margin: 0 auto;
   padding: 12px 16px;
 }
@@ -80,7 +78,7 @@ body {
   color: #334155;
 }
 .btn.subtle {
-  background: ;
+  background: #fff;
   color: #3730a3;
 }
 .btn.danger {

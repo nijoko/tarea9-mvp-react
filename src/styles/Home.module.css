@@ -1,38 +1,12 @@
 /* Home.module.css */
 
-/* Header con logos fijos */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0px 10px 0px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 9999;
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-}
-
-.logo {
-  height: 48px;
-}
-
-.logoUsm {
-  margin-left: 22px;
-}
-
-.logoFeria {
-  margin-right: 22px;
-}
-
 /* Hero Section centrado */
 .heroSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   margin: 0;
   text-align: center;
   overflow: hidden;
@@ -40,7 +14,7 @@
 
 .heroContent {
   max-width: 600px;
-  max-height: 600px;
+  max-height: 500px;
   width: 100%;
   height: 100%;
   display: grid;
@@ -65,10 +39,11 @@
 .braceOpen {
   grid-column: 1;
   grid-row: 1/4;
+  display: flex;
   justify-self: end;
   align-self: start;
   position: relative;
-  top: -50px;
+  top: -60px;
 }
 
 .braceClose {
@@ -77,7 +52,7 @@
   justify-self: start;
   align-self: end;
   position: relative;
-  top: 0px;
+  top: 10px;
 }
 
 /* Títulos del hero */
@@ -139,13 +114,15 @@
 
 /* Tagline final */
 .heroEnd {
+  height: 30px;
+  overflow: hidden;
   font-weight: bold;
   grid-column: 1/4;
   grid-row: 4;
   font-size: 24px;
   white-space: nowrap;
   color: #f5f5f5;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -153,7 +130,7 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
-  margin: -60px auto 20px auto;
+  margin: -100px auto 20px auto;
   max-width: 420px;
   padding: 0 16px;
 }
@@ -179,7 +156,6 @@
 
 .exploreButton:hover {
   background-color: #4e8ed2;
-  border: 2px solid #74032c;
 }
 
 /* Footer */

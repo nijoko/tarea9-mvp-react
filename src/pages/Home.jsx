@@ -6,20 +6,6 @@ export default function Home() {
 
   return (
     <>
-      {/* HEADER/BARRA SUPERIOR CON LOGOS Y GRADIENTE */}
-      <div className={styles.header}>
-        <img 
-          src='https://www.feriadesoftware.cl/wp-content/uploads/2025/09/di-usm.png' 
-          alt='Logo UTFSM' 
-          className={`${styles.logo} ${styles.logoUsm}`}
-        />
-        <img 
-          src='https://static.younoodle.com/pictures/38/49/41/5a8dac8eec2968_49384881.png' 
-          alt='Logo Feria' 
-          className={`${styles.logo} ${styles.logoFeria}`}
-        />
-      </div>
-
       {/* HERO SECTION centrado */}
       <div className={styles.heroSection}>
         <div className={styles.heroContent}>
