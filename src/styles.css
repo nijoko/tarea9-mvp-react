@@ -2,7 +2,7 @@
   --indigo: #ECEFFE;
   --rose: #e11d48;
   --border: #e2e8f0;
-  --bg: #211D49;
+  --bg: #1E2254;
 }
 * {
   box-sizing: border-box;
@@ -69,21 +69,27 @@ body {
   font-size: 14px;
 }
 .btn.primary {
-  background: var(--indigo);
-  color: #262730;
+  background: #292F6F;
+  color: #fff;
+  border: 1px solid var(--border);
 }
 .btn.ghost {
-  background: #fff;
+  background: #292F6F;
   border: 1px solid var(--border);
-  color: #334155;
+  color: #fff;
 }
 .btn.subtle {
-  background: #fff;
-  color: #3730a3;
+  background: #292F6F;
+  color: #fff;
+  border: 1px solid var(--border);
 }
 .btn.danger {
-  background: var(--rose);
-  color: #262730;
+  background: #292F6F;
+  color: #fff;
+  border: 1px solid var(--border);
+}
+.btn:hover {
+  background-color: #1f4e80;
 }
 .grid {
   display: grid;
@@ -106,9 +112,10 @@ textarea {
 .badge {
   display: inline-flex;
   align-items: center;
-  background: #dcfce7;
-  color: #065f46;
+  background: #7B98FF;
+  color: #122121;
   border: 1px solid #bbf7d0;
+  font-weight: bold;
   border-radius: 999px;
   padding: 2px 8px;
   font-size: 12px;
@@ -121,9 +128,10 @@ textarea {
   border-radius: 999px;
   padding: 2px 8px;
   font-size: 12px;
+  font-weight: bold;
   margin: 4px 4px 0 0;
   color: #334155;
-  background: #f8fafc;
+  background: #89a7c5;
 }
 .modal {
   position: fixed;

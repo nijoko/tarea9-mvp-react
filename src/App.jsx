@@ -74,7 +74,7 @@ export default function App(){
           <div className="tabs">
             <NavTab label="Home" to="/" />
             <NavTab label="Explorar" to="/explorar" />
-            <NavTab label="Sesiones y Agenda" to="/programa" />
+            <NavTab label="Programa" to="/programa" />
             <NavTab label="Transmisión" to="/streaming" />
             <NavTab label="Mi Feria" to="/mi-feria" badge={(favorites.length+agenda.length)||undefined} />
           </div>
