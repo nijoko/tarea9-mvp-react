@@ -99,7 +99,7 @@ export default function App(){
 
       {!isHomePage && (
         <footer className="footer">
-          Hecho como prototipo educativo. Todos los elementos interactivos funcionan (favoritos, comparar, agenda, transmisión simulada, chat, descarga .ics).
+          Derechos reservados @jinjofan y sus amigos.
         </footer>
       )}
     </div>
