@@ -25,5 +25,3 @@ Sigue estos tres pasos para poner en marcha la aplicación:
 - Juan Mamani (@nijoko)
 - Pedro Arce (@PedroArceCis)
 
-* **[Tu Nombre Completo]** ([@TuUsuarioDeGitHub])
-
