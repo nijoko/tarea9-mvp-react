@@ -2,21 +2,6 @@
   margin: 8px 0;
 }
 
-.favoriteCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.favoriteTitle {
-  font-size: 16px;
-}
-
-.favoriteSubtitle {
-  font-size: 13px;
-  color: #64748b;
-}
-
 .compareTable {
   overflow: auto;
   margin: 8px 0;
@@ -38,19 +23,4 @@
 
 .agendaGrid {
   margin: 8px 0;
-}
-
-.agendaCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.agendaTitle {
-  font-size: 16px;
-}
-
-.agendaMeta {
-  font-size: 13px;
-  color: #64748b;
 }

@@ -1,9 +1,10 @@
 import React from 'react'
-import Card from '../components/Card'
+import MiFeriaCard from '../components/MiFeriaCard'
 import Button from '../components/Button'
 import { buildICS } from '../utils/ics'
 import { downloadText } from '../utils/download'
 import styles from '../styles/MiFeria.module.css'
+import cardStyles from '../components/MiFeriaCard.module.css'
 
 export default function MyFair({favorites, setFavorites, compare, setCompare, agenda, setAgenda, projectsById, sessionsById}){
   const favProjects = favorites.map(id => projectsById[id]).filter(Boolean)
@@ -17,21 +18,21 @@ export default function MyFair({favorites, setFavorites, compare, setCompare, ag
 
   return (
     <div className="container">
-      <h2 className="h2">⭐ Mi Feria</h2>
+      <h2 className="h2">Mi Feria</h2>
 
       <h3>Favoritos</h3>
       {favProjects.length===0 ? <p>Aún no tienes favoritos.</p> : (
         <div className={`grid grid-2 ${styles.favoritesSection}`}>
           {favProjects.map(p => (
-            <Card key={p.id}>
-              <div className={styles.favoriteCard}>
+            <MiFeriaCard key={p.id}>
+              <div className={cardStyles.favoriteCard}>
                 <div>
-                  <div className={`h1 ${styles.favoriteTitle}`}>{p.title}</div>
-                  <div className={styles.favoriteSubtitle}>{p.one_liner}</div>
+                  <div className={`h1 ${cardStyles.favoriteTitle}`}>{p.title}</div>
+                  <div className={cardStyles.favoriteSubtitle}>{p.one_liner}</div>
                 </div>
                 <Button variant="danger" onClick={()=>removeFav(p.id)}>Quitar</Button>
               </div>
-            </Card>
+            </MiFeriaCard>
           ))}
         </div>
       )}
@@ -58,15 +59,15 @@ export default function MyFair({favorites, setFavorites, compare, setCompare, ag
         <>
           <div className={`grid grid-2 ${styles.agendaGrid}`}>
             {agSessions.map(s => (
-              <Card key={s.id}>
-                <div className={styles.agendaCard}>
+              <MiFeriaCard key={s.id}>
+                <div className={cardStyles.agendaCard}>
                   <div>
-                    <div className={`h1 ${styles.agendaTitle}`}>{s.title}</div>
-                    <div className={styles.agendaMeta}>{s.start} — {s.end} · {s.track||'—'}</div>
+                    <div className={`h1 ${cardStyles.agendaTitle}`}>{s.title}</div>
+                    <div className={cardStyles.agendaMeta}>{s.start} — {s.end} · {s.track||'—'}</div>
                   </div>
                   <Button variant="danger" onClick={()=>removeAg(s.id)}>Quitar</Button>
                 </div>
-              </Card>
+              </MiFeriaCard>
             ))}
           </div>
           <Button onClick={downloadICS}>⬇️ Descargar .ics</Button>

@@ -3,10 +3,53 @@
 .filterSection {
   margin: 8px 0;
 }
-
-.collapsible {
-  cursor: pointer;
+.contain-filters {
+  background-color: red;
+  display: inline-flex;
+  align-items: center;
+  justify-content:  center;
+  width: 100%;
+  padding: 20px;
+  padding-inline: 2rem;
 }
+
+.icon-filter {
+  object-fit: contain;
+  width:max-content;
+  margin: auto;
+  height:16px;
+  z-index: 1; 
+ }
+.collapsible {
+  background: #D4D9F3;
+  border-radius: 12px;
+  color: black;
+  padding: 12px 20px;
+  font-size: 14px;
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.collapsible:hover {
+  background: #c5cdeb;
+}
+
+.dropdownFilters {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 16px;
+}
+
 
 .moreFilters {
   margin-top: 8px;
@@ -15,7 +58,7 @@
 .filterLabel {
   font-weight: 500;
   font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 6px;  
 }
 
 .filterTag {
@@ -73,44 +116,7 @@
   margin-top: 12px;
 }
 
-.projectCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.projectInfo {
-  flex: 1;
-}
-
-.projectTitle {
-  font-size: 1.5rem;
-  color:#D4D9F3;
-  
-}
-
-.projectSubtitle {
-  font-size: 1.2rem;
-  font-weight: semi-bold;
-  color: #D4D9F3;
-}
-
-.tagContainer {
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.techTagContainer {
-  margin-top: 4px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.actionButtons {
-  margin-top: 12px;
-}
-
+/* Estilos del modal */
 .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -140,7 +146,7 @@
 }
 
 .modalGrid {
-  margin-top: 12px;
+  margin-top: -52px;
 }
 
 .teamSection {

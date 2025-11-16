@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Card from '../components/Card'
+import StreamingCard from '../components/StreamingCard'
 import Button from '../components/Button'
 import { SESSIONS } from '../data/projects'
 import { toDate, fmtHour } from '../utils/date'
@@ -35,7 +35,7 @@ export default function Transmission({txSessionId}){
       </div>
 
       <div className="grid grid-2">
-        <Card>
+        <StreamingCard>
           <div className={styles.videoHeader}>
             <div>
               <div className={`h1 ${styles.videoTitle}`}>🎤 {s.title}</div>
@@ -62,14 +62,14 @@ export default function Transmission({txSessionId}){
               <Button variant="subtle" onClick={()=>setReactions(r=>({...r, idea:r.idea+1}))}>💡 {reactions.idea}</Button>
             </div>
           </div>
-        </Card>
+        </StreamingCard>
         <div>
-          <Card>
+          <StreamingCard>
             <div className={styles.audienceSection}>Audiencia (simulada)</div>
             <input type="range" min={0} max={1000} value={viewers} onChange={e=>setViewers(parseInt(e.target.value))} className={styles.audienceSlider} />
             <div className={styles.audienceCount}>{viewers}</div>
-          </Card>
-          <Card>
+          </StreamingCard>
+          <StreamingCard>
             <div className={styles.chatSection}>Chat en vivo (simulado)</div>
             <div className={styles.chatContainer}>
               {chat.length===0 ? <div className={styles.chatEmpty}>No hay mensajes aún.</div> : chat.map((m,i)=>(<div key={i} className={styles.chatMessage}><b>{m.name}</b>: {m.msg}</div>))}
@@ -77,12 +77,12 @@ export default function Transmission({txSessionId}){
             <input className={`input ${styles.chatInput}`} value={name} onChange={e=>setName(e.target.value)} placeholder="Tu nombre" />
             <input className={`input ${styles.chatInput}`} value={msg} onChange={e=>setMsg(e.target.value)} placeholder="Escribe un mensaje" />
             <Button onClick={()=>{ if(msg.trim()){ setChat(c=>[...c,{name, msg}]); setMsg('') } }}>Enviar</Button>
-          </Card>
-          <Card>
+          </StreamingCard>
+          <StreamingCard>
             <div className={styles.reportSection}>Reportar problema</div>
             <textarea className={`input ${styles.reportTextarea}`} placeholder="Describe el problema (audio, video, acceso…)" />
             <Button variant="ghost" onClick={()=>alert('Reporte enviado (simulado)')}>Enviar reporte</Button>
-          </Card>
+          </StreamingCard>
         </div>
       </div>
     </div>

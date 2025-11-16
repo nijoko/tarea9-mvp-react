@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Card from '../components/Card'
+import ProgramaCard from '../components/ProgramaCard'
 import Button from '../components/Button'
 import { SESSIONS } from '../data/projects'
 import { fmtHour, toDate } from '../utils/date'
 import styles from '../styles/Programa.module.css'
+import cardStyles from '../components/ProgramaCard.module.css'
 
 export default function Program({agenda, setAgenda, setTxSessionId}){
   const navigate = useNavigate()
@@ -46,19 +47,19 @@ export default function Program({agenda, setAgenda, setTxSessionId}){
       ) : (
         <div className="grid grid-2" style={{marginTop:12}}>
           {filtered.map(s => (
-            <Card key={s.id}>
-              <div className={styles.sessionCard}>
-                <div className={styles.sessionInfo}>
-                  <div className={`h1 ${styles.sessionTitle}`}>{s.title}</div>
-                  <div className={styles.sessionMeta}>🕒 {fmtHour(s.start)} — {fmtHour(s.end)} · 🎯 {s.track||'—'}</div>
-                  <div className={styles.sessionSpeakers}>{(s.speakers||[]).join(', ')}</div>
+            <ProgramaCard key={s.id}>
+              <div className={cardStyles.sessionCard}>
+                <div className={cardStyles.sessionInfo}>
+                  <div className={`h1 ${cardStyles.sessionTitle}`}>{s.title}</div>
+                  <div className={cardStyles.sessionMeta}>🕒 {fmtHour(s.start)} — {fmtHour(s.end)} · 🎯 {s.track||'—'}</div>
+                  <div className={cardStyles.sessionSpeakers}>{(s.speakers||[]).join(', ')}</div>
                 </div>
               </div>
-              <div className={`grid grid-2 ${styles.sessionActions}`}>
+              <div className={`grid grid-2 ${cardStyles.sessionActions}`}>
                 <Button onClick={()=>{ setTxSessionId(s.id); navigate('/streaming'); }}>🏟️ Ver transmisión en sala</Button>
                 <Button variant="subtle" onClick={()=>addAgenda(s.id)}>➕ Añadir a mi agenda</Button>
               </div>
-            </Card>
+            </ProgramaCard>
           ))}
         </div>
       )}
