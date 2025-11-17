@@ -1,14 +1,14 @@
 # React
 
-#  Tarea 9: Feria de Software en línea
+#  Proyecto Entrega 2: Feria de Software en línea
 
 ## Sobre el Proyecto
 
-Este es el Producto Mínimo Viable desarrollado en React para la Tarea 9 de Diseño de Interfaces Usuarias.
+Esta es la segunda entrega del proyecto "mi Feria de Software Online" desarrollado en React para la Tarea 9 de Diseño de Interfaces Usuarias.
 
 ## ⚙️ Ejecución del Proyecto
 
-Sigue estos pasos para poner en marcha la aplicación:
+Pasos a seguir para lanzar/iniciar la aplicación:
 
 1.  **Instalar dependencias:**
     ```bash
@@ -45,7 +45,7 @@ La aplicación estará disponible en **http://localhost:3000**
 
 ### Netlify
 El proyecto está configurado para deployment en Netlify con soporte para React Router.
-Simplemente conecta tu repositorio o usa `netlify deploy --prod`
+Conecta tu repositorio o usa `netlify deploy --prod`
 
 ## 🛠️ Tecnologías
 
