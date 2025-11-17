@@ -1,0 +1,26 @@
+# Docker y archivos de build
+dist
+node_modules
+.git
+.gitignore
+*.log
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos de IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de test
+coverage
+*.test.js
+*.spec.js
