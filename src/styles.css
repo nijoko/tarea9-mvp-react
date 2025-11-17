@@ -2,8 +2,10 @@
   --indigo: #ECEFFE;
   --rose: #e11d48;
   --border: #e2e8f0;
-  --bg: rgb(236,239,254);
-  --tb: #1E2254;   
+  --bg: #1E2254;
+}
+* {
+  box-sizing: border-box;
 }
 body {
   margin: 0;
@@ -20,16 +22,16 @@ body {
 .topbar {
   position: sticky;
   top: 0;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   z-index: 10;
   height: 80px;
 }
 .topbar .inner {
-  background: var(--tb);
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 15px 16px;
+  padding: 12px 16px;
 }
 .h1 {
   font-weight: bolder;
@@ -102,16 +104,14 @@ body {
 .input,
 select,
 textarea {
+  padding: 8px 12px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  font-size: 16px;
-  width: max-content;
-  height: 48px;
-  padding-inline: 1rem;
+  font-size: 14px;
 }
 .badge {
   display: inline-flex;
-  align-items: space-between;
+  align-items: center;
   background: #7B98FF;
   color: #122121;
   border: 1px solid #bbf7d0;
@@ -120,14 +120,6 @@ textarea {
   padding: 2px 8px;
   font-size: 12px;
   margin-left: 8px;
-}
-
-.input{
-  max-width: 26rem;
-}
-
-select{
-  background: #D4D9F3;
 }
 .tag {
   display: inline-flex;
@@ -177,32 +169,5 @@ select{
 hr {
   border: none;
   border-top: 1px solid var(--border);
-}
-
-.title2n{
-  font-size: 7rem;
-  font-weight: 350;
-  color: #D4D9F3;
-  height: max-content;
-  overflow: hidden;
-  padding-inline: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 1.5rem;
-  unicode-bidi: isolate;
-  margin: auto;
-}
-
-.containermt2{
-  padding-top: -6px;
-  outline:none;
-  display:inline-block;
-  height: 150px;
-  margin: 0 auto;
-  width: 100%;
-  height: max-content;
-  background-color: var(--tb);
-}
-
-p{
-  color:black;
+  margin: 16px 0;
 }

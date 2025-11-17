@@ -4,98 +4,29 @@
   margin: 8px 0;
 }
 
-.containFilters {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 48px;
-  padding-top: 20px;
-  padding-bottom: 14px;
-  padding-inline: 2rem;
-}
-
-.icon-filter {
-  object-fit: contain;
-  width:max-content;
-  margin: auto;
-  height:16px;
-  z-index: 1; 
- }
 .collapsible {
-  background: #D4D9F3;
-  border-radius: 12px;
-  color: black;
-  padding: 12px 20px;
-  font-size: 14px;
-  width: max-content;
-  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
-
-.collapsible:hover {
-  background: #c5cdeb;
-}
-
-.dropdownFilters {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: auto;
-  margin-top: 8px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  padding: 16px;
-  min-width: 400px;
-  max-width: 600px;
-  width: max-content;
-  font-size: 14px;
-  color: #334155;
-}
-
 
 .moreFilters {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  margin-top: 8px;
 }
 
 .filterLabel {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
-  margin-bottom: 8px;
-  color: #1e293b;
-}
-
-.tagContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .filterTag {
   cursor: pointer;
   border-color: #e2e8f0;
   background: #f8fafc;
-  font-size: 13px;
-  padding: 6px 12px;
-  transition: all 0.2s ease;
-}
-
-.filterTag:hover {
-  background: #e0e7ff;
-  border-color: #818cf8;
 }
 
 .filterTagActive {
   border-color: #4f46e5 !important;
   background: #eef2ff !important;
-  color: #4338ca;
-  font-weight: 500;
 }
 
 .hiddenCheckbox {
@@ -107,9 +38,7 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  margin-top: 8px;
-  color: #475569;
-  cursor: pointer;
+  margin-top: 6px;
 }
 
 .filterChips {
@@ -141,14 +70,47 @@
 }
 
 .resultsGrid {
-  padding-bottom: 14px;
-  color: #1E2254;
-  font-size: 3rem;
-  font-weight: 400;
-  margin: 0 auto;
+  margin-top: 12px;
 }
 
-/* Estilos del modal */
+.projectCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.projectInfo {
+  flex: 1;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  color:#D4D9F3;
+  
+}
+
+.projectSubtitle {
+  font-size: 1.2rem;
+  font-weight: semi-bold;
+  color: #D4D9F3;
+}
+
+.tagContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.techTagContainer {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.actionButtons {
+  margin-top: 12px;
+}
+
 .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -178,7 +140,7 @@
 }
 
 .modalGrid {
-  margin-top: -52px;
+  margin-top: 12px;
 }
 
 .teamSection {
@@ -201,8 +163,5 @@
 
 .modalActions {
   margin-top: 12px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
 }
 

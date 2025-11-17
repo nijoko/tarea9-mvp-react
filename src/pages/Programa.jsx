@@ -1,11 +1,10 @@
 import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import ProgramaCard from '../components/ProgramaCard'
+import Card from '../components/Card'
 import Button from '../components/Button'
 import { SESSIONS } from '../data/projects'
 import { fmtHour, toDate } from '../utils/date'
 import styles from '../styles/Programa.module.css'
-import cardStyles from '../components/ProgramaCard.module.css'
 
 export default function Program({agenda, setAgenda, setTxSessionId}){
   const navigate = useNavigate()
@@ -22,95 +21,47 @@ export default function Program({agenda, setAgenda, setTxSessionId}){
     .sort((a,b)=> order==='early'? a.startDate-b.startDate : b.startDate-a.startDate)
   ,[sessions, selDay, selTrack, order])
 
-  const toggleAgenda = (id) => setAgenda(a => a.includes(id) ? a.filter(x => x !== id) : [...a, id])
-
-  // Formatear fecha: "Viernes, 15 de Noviembre 2024"
-  const formatDate = (dateStr) => {
-    const [year, month, day] = dateStr.split('-')
-    const date = new Date(year, month - 1, day)
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    return date.toLocaleDateString('es-ES', options)
-  }
-
+  const addAgenda = (id) => setAgenda(a => a.includes(id)? a : [...a,id])
 
   return (
-    <>
-      <div className="containermt2">
-        <h2 className="title2n" style={{ textAlign: "left" }}>Agenda</h2>
+    <div className="container">
+      <h2 className="h2">🗓️ Sesiones y Agenda</h2>
+      <div className={`grid grid-3 ${styles.filterSection}`}>
+        <select className="input" value={selDay} onChange={e=>setSelDay(e.target.value)}>
+          {days.map(d => <option key={d}>{d}</option>)}
+        </select>
+        <select className="input" value={selTrack} onChange={e=>setSelTrack(e.target.value)}>
+          <option value="">Track (Todos)</option>
+          {tracks.map(t => <option key={t}>{t}</option>)}
+        </select>
+        <select className="input" value={order} onChange={e=>setOrder(e.target.value)}>
+          <option value="early">Ordenar: más temprano primero</option>
+          <option value="late">Ordenar: más tarde primero</option>
+        </select>
       </div>
-      <div className={styles.filterSection}>
-        <div className={styles.filterRow}>
-          <div className={styles.dateButtons}>
-            {days.map(d => (
-              <button 
-                key={d}
-                className={`${styles.dateButton} ${selDay === d ? styles.dateButtonActive : ''}`}
-                onClick={() => setSelDay(d)}
-              >
-                {formatDate(d)}
-              </button>
-            ))}
-          </div>
-          <div className={styles.filterControls}>
-            <select className="input" value={selTrack} onChange={e=>setSelTrack(e.target.value)}>
-              <option value="">Track (Todos)</option>
-              {tracks.map(t => <option key={t}>{t}</option>)}
-            </select>
-            <select className="input" value={order} onChange={e=>setOrder(e.target.value)}>
-              <option value="early">Ordenar: más temprano primero</option>
-              <option value="late">Ordenar: más tarde primero</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div className="container">
+      <div className={styles.anchorSection}>Anclas: <button className="btn ghost" onClick={()=>setOrder('early')}>Inicio del día</button> · <button className="btn ghost" onClick={()=>setOrder('late')}>Fin del día</button></div>
+
       {filtered.length===0 ? (
         <p>No hay sesiones para el filtro seleccionado.</p>
       ) : (
-        <div className={styles.sessionsList}>
+        <div className="grid grid-2" style={{marginTop:12}}>
           {filtered.map(s => (
-            <div key={s.id} className={styles.sessionItem}>
-              <div className={styles.sessionTime}>{fmtHour(s.start)}</div>
-              <ProgramaCard>
-                <div className={cardStyles.sessionCard}>
-                  <div className={cardStyles.sessionInfo}>
-                    <div className={cardStyles.sessionHeader}>
-                      <div className={`h1 ${cardStyles.sessionTitle}`}>{s.title}</div>
-                      {s.type && (
-                        <span className={cardStyles.sessionType}>{s.type}</span>
-                      )}
-                    </div>
-                    <div className={cardStyles.sessionMeta}>
-                      <span>🕒 {fmtHour(s.start)} — {fmtHour(s.end)}</span>
-                      {s.location && <span>📍 {s.location}</span>}
-                      {s.track && <span className={cardStyles.trackBadge}>🎯 {s.track}</span>}
-                    </div>
-                    {s.speakers && s.speakers.length > 0 && (
-                      <div className={cardStyles.sessionSpeakers}>
-                        <span className={cardStyles.speakersLabel}>👥 Presentadores:</span>
-                        <span className={cardStyles.speakersList}>
-                          {s.speakers.slice(0, 3).join(' • ')}
-                          {s.speakers.length > 3 && ` +${s.speakers.length - 3} más`}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+            <Card key={s.id}>
+              <div className={styles.sessionCard}>
+                <div className={styles.sessionInfo}>
+                  <div className={`h1 ${styles.sessionTitle}`}>{s.title}</div>
+                  <div className={styles.sessionMeta}>🕒 {fmtHour(s.start)} — {fmtHour(s.end)} · 🎯 {s.track||'—'}</div>
+                  <div className={styles.sessionSpeakers}>{(s.speakers||[]).join(', ')}</div>
                 </div>
-                <div className={cardStyles.sessionActions}>
-                  <Button onClick={()=>{ setTxSessionId(s.id); navigate('/streaming'); }}>🏟️ Ver transmisión en sala</Button>
-                  <Button 
-                    variant={agenda.includes(s.id) ? "ghost" : "subtle"} 
-                    onClick={()=>toggleAgenda(s.id)}
-                  >
-                    {agenda.includes(s.id) ? "✓ En mi agenda" : "➕ Añadir a mi agenda"}
-                  </Button>
-                </div>
-              </ProgramaCard>
-            </div>
+              </div>
+              <div className={`grid grid-2 ${styles.sessionActions}`}>
+                <Button onClick={()=>{ setTxSessionId(s.id); navigate('/streaming'); }}>🏟️ Ver transmisión en sala</Button>
+                <Button variant="subtle" onClick={()=>addAgenda(s.id)}>➕ Añadir a mi agenda</Button>
+              </div>
+            </Card>
           ))}
         </div>
       )}
-      </div>
-    </>
+    </div>
   )
 }

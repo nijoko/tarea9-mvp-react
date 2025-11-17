@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import StreamingCard from '../components/StreamingCard'
+import Card from '../components/Card'
 import Button from '../components/Button'
 import { SESSIONS } from '../data/projects'
 import { toDate, fmtHour } from '../utils/date'
@@ -23,10 +23,8 @@ export default function Transmission({txSessionId}){
   const isLive = now >= s.startDate && now <= s.endDate
 
   return (
-    <>
-      <div className="containermt2">
-        <h2 className="title2n" style={{ textAlign: "left" }}>Transmisión</h2>
-      </div>
+    <div className="container">
+      <h2 className="h2">📺 Transmisión de sesiones (simulada)</h2>
       <div className={`grid grid-3 ${styles.filterSection}`}>
         <select className="input" value={selId} onChange={e=>setSelId(e.target.value)}>
           {SESSIONS.map(x => <option key={x.id} value={x.id}>{x.start} — {x.title} [{x.track||'—'}]</option>)}
@@ -35,9 +33,9 @@ export default function Transmission({txSessionId}){
           <input type="checkbox" checked={forceLive} onChange={e=>setForceLive(e.target.checked)} /> Simular "EN VIVO"
         </label>
       </div>
-      <div className="container">
+
       <div className="grid grid-2">
-        <StreamingCard>
+        <Card>
           <div className={styles.videoHeader}>
             <div>
               <div className={`h1 ${styles.videoTitle}`}>🎤 {s.title}</div>
@@ -64,14 +62,14 @@ export default function Transmission({txSessionId}){
               <Button variant="subtle" onClick={()=>setReactions(r=>({...r, idea:r.idea+1}))}>💡 {reactions.idea}</Button>
             </div>
           </div>
-        </StreamingCard>
+        </Card>
         <div>
-          <StreamingCard>
+          <Card>
             <div className={styles.audienceSection}>Audiencia (simulada)</div>
             <input type="range" min={0} max={1000} value={viewers} onChange={e=>setViewers(parseInt(e.target.value))} className={styles.audienceSlider} />
             <div className={styles.audienceCount}>{viewers}</div>
-          </StreamingCard>
-          <StreamingCard>
+          </Card>
+          <Card>
             <div className={styles.chatSection}>Chat en vivo (simulado)</div>
             <div className={styles.chatContainer}>
               {chat.length===0 ? <div className={styles.chatEmpty}>No hay mensajes aún.</div> : chat.map((m,i)=>(<div key={i} className={styles.chatMessage}><b>{m.name}</b>: {m.msg}</div>))}
@@ -79,15 +77,14 @@ export default function Transmission({txSessionId}){
             <input className={`input ${styles.chatInput}`} value={name} onChange={e=>setName(e.target.value)} placeholder="Tu nombre" />
             <input className={`input ${styles.chatInput}`} value={msg} onChange={e=>setMsg(e.target.value)} placeholder="Escribe un mensaje" />
             <Button onClick={()=>{ if(msg.trim()){ setChat(c=>[...c,{name, msg}]); setMsg('') } }}>Enviar</Button>
-          </StreamingCard>
-          <StreamingCard>
+          </Card>
+          <Card>
             <div className={styles.reportSection}>Reportar problema</div>
             <textarea className={`input ${styles.reportTextarea}`} placeholder="Describe el problema (audio, video, acceso…)" />
             <Button variant="ghost" onClick={()=>alert('Reporte enviado (simulado)')}>Enviar reporte</Button>
-          </StreamingCard>
+          </Card>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   )
 }
