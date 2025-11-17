@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import ExplorarCard from "../components/ExplorarCard";
 import Button from "../components/Button";
@@ -15,6 +16,7 @@ export default function Explore({
   selectedProject,
   setSelectedProject,
 }) {
+  const navigate = useNavigate();
   const [q, setQ] = useState("");
   const allIndustries = [
     ...new Set(PROJECTS.flatMap((p) => p.industries || [])),
@@ -75,7 +77,7 @@ export default function Explore({
           Explorar Proyectos
         </h2>
       </div>
-      <div className='contain-filters' >
+      <div className={styles.containFilters} >
           <input
             className="input"
             placeholder="Buscar (título, resumen, tecnología)"
@@ -83,44 +85,44 @@ export default function Explore({
             onChange={(e) => setQ(e.target.value)}
             style={{flex: 1}}
           />
-          <select
-            className="input"
-            value={selTrl}
-            onChange={(e) => setSelTrl(e.target.value)}
-            style={{flex: 1}}
-          >
-            <option value="">Estado/TRL (Todos)</option>
-            {trls.map((t) => (
-              <option key={t}>{t}</option>
-            ))}
-          </select>
-          <select
-            className="input"
-            value={selLang}
-            onChange={(e) => setSelLang(e.target.value)}
-            style={{flex: 1}}
-          >
-            <option value="">Idioma (Todos)</option>
-            {langs.map((l) => (
-              <option key={l}>{l}</option>
-            ))}
-          </select>
-
-          <div style={{flex: 1, position: 'relative'}}>
-            <button 
-              className={styles.collapsible}
-              onClick={() => setShowFilters(!showFilters)}
+          
+          <div style={{display: 'flex', gap: '12px', alignItems: 'center'}}>
+            <select
+              className="input"
+              value={selTrl}
+              onChange={(e) => setSelTrl(e.target.value)}
             >
-              <img 
-                src="https://cdn.iconscout.com/icon/free/png-512/free-filter-icon-svg-download-png-3007732.png?f=webp&w=512" 
-                alt="Filter icon"
-                style={{width: '14px', height: '16px', marginRight: '6px', verticalAlign: 'middle'}}
-              />
-              Filtros
-            </button>
-            
-            {showFilters && (
-              <div className={styles.dropdownFilters}>
+              <option value="">Estado/TRL (Todos)</option>
+              {trls.map((t) => (
+                <option key={t}>{t}</option>
+              ))}
+            </select>
+            <select
+              className="input"
+              value={selLang}
+              onChange={(e) => setSelLang(e.target.value)}
+            >
+              <option value="">Idioma (Todos)</option>
+              {langs.map((l) => (
+                <option key={l}>{l}</option>
+              ))}
+            </select>
+
+            <div style={{ position: 'relative'}}>
+              <button 
+                className={styles.collapsible}
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <img 
+                  src="https://cdn.iconscout.com/icon/free/png-512/free-filter-icon-svg-download-png-3007732.png?f=webp&w=512" 
+                  alt="Filter icon"
+                  style={{width: '14px', height: '16px', marginRight: '6px', verticalAlign: 'middle'}}
+                />
+                Filtros
+              </button>
+              
+              {showFilters && (
+                <div className={styles.dropdownFilters}>
                 <div className={styles.moreFilters}>
                   <div className={styles.filterLabel}>Industrias</div>
                   <div className={styles.tagContainer}>
@@ -156,6 +158,7 @@ export default function Explore({
                 </div>
               </div>
             )}
+            </div>
           </div>
         </div>
 
@@ -244,15 +247,15 @@ export default function Explore({
                   ))}
                   <Tag>TRL: {p.trl}</Tag>
                 </div>
-                <div className={`grid grid-3 ${cardStyles.actionButtons}`}>
+                <div className={cardStyles.actionButtons}>
                   <Button onClick={() => toggleFav(p.id)}>
                     {favorites.includes(p.id) ? "⭐ Quitar" : "⭐ Guardar"}
                   </Button>
                   <Button variant="subtle" onClick={() => toggleCmp(p.id)}>
                     {compare.includes(p.id) ? "🧪 Quitar" : "🧪 Comparar"}
                   </Button>
-                  <Button variant="ghost" onClick={() => setSelectedProject(p)}>
-                    📄 Ver ficha
+                  <Button variant="ghost" onClick={() => navigate(`/proyecto/${p.id}`)}>
+                    📄 Ver ficha completa
                   </Button>
                 </div>
               </ExplorarCard>
@@ -324,7 +327,7 @@ export default function Explore({
                 <Tag>TRL: {selectedProject.trl}</Tag>
               </div>
 
-              <div className={`grid grid-3 ${styles.modalActions}`}>
+              <div className={styles.modalActions}>
                 {selectedProject.demo_url && (
                   <Button
                     onClick={() =>

@@ -2,6 +2,15 @@
   margin: 8px 0;
 }
 
+.sectionTitle {
+  padding-bottom: 14px;
+  color: #1E2254;
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
 .compareTable {
   overflow: auto;
   margin: 8px 0;

@@ -102,11 +102,12 @@ body {
 .input,
 select,
 textarea {
-  padding: 18px 22px;
   border: 1px solid var(--border);
   border-radius: 12px;
   font-size: 16px;
-  max-width: 16rem;
+  width: max-content;
+  height: 48px;
+  padding-inline: 1rem;
 }
 .badge {
   display: inline-flex;
@@ -119,6 +120,10 @@ textarea {
   padding: 2px 8px;
   font-size: 12px;
   margin-left: 8px;
+}
+
+.input{
+  max-width: 26rem;
 }
 
 select{

@@ -17,27 +17,30 @@ export default function MyFair({favorites, setFavorites, compare, setCompare, ag
   const downloadICS = () => { const ics = buildICS(agSessions); downloadText('mi_agenda.ics', ics, 'text/calendar') }
 
   return (
-    <div className="container">
-      <h2 className="h2">Mi Feria</h2>
+    <>
+      <div className="containermt2">
+        <h2 className="title2n" style={{ textAlign: "left" }}>Mi Feria</h2>
+      </div>
+      <div className="container">
 
-      <h3>Favoritos</h3>
+      <h3 className={styles.sectionTitle}>Favoritos</h3>
       {favProjects.length===0 ? <p>Aún no tienes favoritos.</p> : (
         <div className={`grid grid-2 ${styles.favoritesSection}`}>
           {favProjects.map(p => (
             <MiFeriaCard key={p.id}>
-              <div className={cardStyles.favoriteCard}>
-                <div>
-                  <div className={`h1 ${cardStyles.favoriteTitle}`}>{p.title}</div>
-                  <div className={cardStyles.favoriteSubtitle}>{p.one_liner}</div>
-                </div>
-                <Button variant="danger" onClick={()=>removeFav(p.id)}>Quitar</Button>
+              <div className={cardStyles.favoriteInfo}>
+                <div className={`h1 ${cardStyles.favoriteTitle}`}>{p.title}</div>
+                <div className={cardStyles.favoriteSubtitle}>{p.one_liner}</div>
+              </div>
+              <div className={cardStyles.favoriteActions}>
+                <Button variant="danger" onClick={()=>removeFav(p.id)}>Quitar favorito</Button>
               </div>
             </MiFeriaCard>
           ))}
         </div>
       )}
 
-      <h3>Comparación (hasta 3)</h3>
+      <h3 className={styles.sectionTitle}>Comparación (hasta 3)</h3>
       {cmpProjects.length<2 ? <p>Selecciona al menos 2 proyectos en Explorar para comparar.</p> : (
         <div className={styles.compareTable}>
           <table className={styles.compareTableInner}>
@@ -54,18 +57,18 @@ export default function MyFair({favorites, setFavorites, compare, setCompare, ag
       )}
       {cmpProjects.length>0 && <Button variant="ghost" onClick={()=>setCompare([])}>Limpiar comparación</Button>}
 
-      <h3 className={styles.agendaSection}>Mi agenda</h3>
+      <h3 className={styles.sectionTitle}>Mi agenda</h3>
       {agSessions.length===0 ? <p>Tu agenda está vacía.</p> : (
         <>
           <div className={`grid grid-2 ${styles.agendaGrid}`}>
             {agSessions.map(s => (
               <MiFeriaCard key={s.id}>
-                <div className={cardStyles.agendaCard}>
-                  <div>
-                    <div className={`h1 ${cardStyles.agendaTitle}`}>{s.title}</div>
-                    <div className={cardStyles.agendaMeta}>{s.start} — {s.end} · {s.track||'—'}</div>
-                  </div>
-                  <Button variant="danger" onClick={()=>removeAg(s.id)}>Quitar</Button>
+                <div className={cardStyles.agendaInfo}>
+                  <div className={`h1 ${cardStyles.agendaTitle}`}>{s.title}</div>
+                  <div className={cardStyles.agendaMeta}>{s.start} — {s.end} · {s.track||'—'}</div>
+                </div>
+                <div className={cardStyles.agendaActions}>
+                  <Button variant="danger" onClick={()=>removeAg(s.id)}>Quitar de agenda</Button>
                 </div>
               </MiFeriaCard>
             ))}
@@ -73,6 +76,7 @@ export default function MyFair({favorites, setFavorites, compare, setCompare, ag
           <Button onClick={downloadICS}>⬇️ Descargar .ics</Button>
         </>
       )}
-    </div>
+      </div>
+    </>
   )
 }

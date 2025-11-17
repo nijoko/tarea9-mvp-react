@@ -23,8 +23,10 @@ export default function Transmission({txSessionId}){
   const isLive = now >= s.startDate && now <= s.endDate
 
   return (
-    <div className="container">
-      <h2 className="h2">📺 Transmisión de sesiones (simulada)</h2>
+    <>
+      <div className="containermt2">
+        <h2 className="title2n" style={{ textAlign: "left" }}>Transmisión</h2>
+      </div>
       <div className={`grid grid-3 ${styles.filterSection}`}>
         <select className="input" value={selId} onChange={e=>setSelId(e.target.value)}>
           {SESSIONS.map(x => <option key={x.id} value={x.id}>{x.start} — {x.title} [{x.track||'—'}]</option>)}
@@ -33,7 +35,7 @@ export default function Transmission({txSessionId}){
           <input type="checkbox" checked={forceLive} onChange={e=>setForceLive(e.target.checked)} /> Simular "EN VIVO"
         </label>
       </div>
-
+      <div className="container">
       <div className="grid grid-2">
         <StreamingCard>
           <div className={styles.videoHeader}>
@@ -85,6 +87,7 @@ export default function Transmission({txSessionId}){
           </StreamingCard>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

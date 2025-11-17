@@ -6,6 +6,7 @@ import Explore from './pages/Explorar'
 import Program from './pages/Programa'
 import Transmission from './pages/Streaming'
 import MyFair from './pages/MiFeria'
+import DetalleProyecto from './pages/DetalleProyecto'
 import { PROJECTS, SESSIONS } from './data/projects'
 
 function NavTab({label, to, badge}){
@@ -74,7 +75,7 @@ export default function App(){
           <div className="tabs">
             <NavTab label="Home" to="/" />
             <NavTab label="Explorar" to="/explorar" />
-            <NavTab label="Programa" to="/programa" />
+            <NavTab label="Cronograma" to="/programa" />
             <NavTab label="Transmisión" to="/streaming" />
             <NavTab label="Mi Feria" to="/mi-feria" badge={(favorites.length+agenda.length)||undefined} />
           </div>
@@ -92,6 +93,7 @@ export default function App(){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explorar" element={<Explore favorites={favorites} setFavorites={setFavorites} compare={compare} setCompare={setCompare} selectedProject={selectedProject} setSelectedProject={setSelectedProject} />} />
+        <Route path="/proyecto/:id" element={<DetalleProyecto favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="/programa" element={<Program agenda={agenda} setAgenda={setAgenda} setTxSessionId={setTxSessionId} />} />
         <Route path="/streaming" element={<Transmission txSessionId={txSessionId} />} />
         <Route path="/mi-feria" element={<MyFair favorites={favorites} setFavorites={setFavorites} compare={compare} setCompare={setCompare} agenda={agenda} setAgenda={setAgenda} projectsById={projectsById} sessionsById={sessionsById} />} />
