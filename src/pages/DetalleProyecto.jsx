@@ -5,7 +5,7 @@ import Tag from '../components/Tag'
 import { PROJECTS } from '../data/projects'
 import styles from '../styles/DetalleProyecto.module.css'
 
-export default function DetalleProyecto({ favorites, setFavorites }) {
+export default function DetalleProyecto({ favorites, setFavorites, agenda, setAgenda }) {
   const { id } = useParams()
   const navigate = useNavigate()
   const project = PROJECTS.find(p => p.id === id)
@@ -23,6 +23,12 @@ export default function DetalleProyecto({ favorites, setFavorites }) {
     setFavorites((f) =>
       f.includes(project.id) ? f.filter((x) => x !== project.id) : [...f, project.id]
     )
+
+  const toggleAgendaSession = (sessionId) => {
+    setAgenda((a) =>
+      a.includes(sessionId) ? a.filter((x) => x !== sessionId) : [...a, sessionId]
+    )
+  }
 
   const isFavorite = favorites.includes(project.id)
 
@@ -208,19 +214,29 @@ export default function DetalleProyecto({ favorites, setFavorites }) {
               <div className={styles.contentSection}>
                 <h3 className={styles.contentTitle}>📅 Horarios de Presentación</h3>
                 <div className={styles.schedulesList}>
-                  {project.schedules.map((schedule, idx) => (
-                    <div key={idx} className={styles.scheduleItem}>
-                      <div className={styles.scheduleDate}>
-                        📅 {schedule.date}
+                  {project.schedules.map((schedule, idx) => {
+                    const isInAgenda = agenda.includes(schedule.sub_id)
+                    return (
+                      <div key={idx} className={styles.scheduleItem}>
+                        <div className={styles.scheduleInfo}>
+                          <div className={styles.scheduleDate}>
+                            📅 {schedule.date}
+                          </div>
+                          <div className={styles.scheduleTime}>
+                            🕒 {schedule.start} - {schedule.end}
+                          </div>
+                          <div className={styles.scheduleLocation}>
+                            📍 Sala {schedule.room} • {schedule.type}
+                          </div>
+                        </div>
+                        <Button 
+                          onClick={() => toggleAgendaSession(schedule.sub_id)}
+                        >
+                          {isInAgenda ? "✓ En mi agenda" : "📅 Agregar a agenda"}
+                        </Button>
                       </div>
-                      <div className={styles.scheduleTime}>
-                        🕒 {schedule.start} - {schedule.end}
-                      </div>
-                      <div className={styles.scheduleLocation}>
-                        📍 Sala {schedule.room} • {schedule.type}
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
             )}

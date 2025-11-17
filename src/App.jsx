@@ -93,7 +93,7 @@ export default function App(){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explorar" element={<Explore favorites={favorites} setFavorites={setFavorites} compare={compare} setCompare={setCompare} selectedProject={selectedProject} setSelectedProject={setSelectedProject} />} />
-        <Route path="/proyecto/:id" element={<DetalleProyecto favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path="/proyecto/:id" element={<DetalleProyecto favorites={favorites} setFavorites={setFavorites} agenda={agenda} setAgenda={setAgenda} />} />
         <Route path="/programa" element={<Program agenda={agenda} setAgenda={setAgenda} setTxSessionId={setTxSessionId} />} />
         <Route path="/streaming" element={<Transmission txSessionId={txSessionId} />} />
         <Route path="/mi-feria" element={<MyFair favorites={favorites} setFavorites={setFavorites} compare={compare} setCompare={setCompare} agenda={agenda} setAgenda={setAgenda} projectsById={projectsById} sessionsById={sessionsById} />} />
