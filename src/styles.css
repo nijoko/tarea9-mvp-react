@@ -202,3 +202,7 @@ hr {
   height: max-content;
   background-color: var(--tb);
 }
+
+p{
+  color:black;
+}
